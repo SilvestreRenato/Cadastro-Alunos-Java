@@ -12,8 +12,7 @@ class Aluno {
         }
 
         public double calcularMedia() {
-            double media = (getNota1() + getNota2()) / 2;
-            return media;
+            return (getNota1() + getNota2()) / 2;
         }
 
         public void exibirInformacoes() {
