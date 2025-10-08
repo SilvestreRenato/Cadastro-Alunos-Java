@@ -5,6 +5,9 @@ public class Main {
         //Scanner para leitura de dados do usuário.
         Scanner scanner = new Scanner(System.in);
 
+        //ArrayList para armazenar os alunos.
+        ArrayList<Aluno> listaDeAlunos = new ArrayList <>();
+
         System.out.println("***Programa Cadastro de Alunos***");
         System.out.println();
 
@@ -21,13 +24,35 @@ public class Main {
 
             // Variável de escolha.
             int option = scanner.nextInt();
+            scanner.nextLine();
 
             switch (option) {
                 case 1:
-                    System.out.println("Opção 1 selecionada.");
+//                  Cadastrar Aluno.
+                    System.out.println("====Cadastro Do Aluno====");
+                    System.out.println("Digite o nome do Aluno: ");
+                    String nomeAluno = scanner.nextLine();
+
+                    System.out.println("Digite o nro da matricula: ");
+                    String matriculaAluno = scanner.nextLine();
+
+                    System.out.println("Digite a primeira nota: ");
+                    double nota1Aluno = scanner.nextDouble();
+
+                    System.out.println("Digite a segunda nota: ");
+                    double nota2Aluno = scanner.nextDouble();
+                    scanner.nextLine();
+
+                    Aluno aluno = new Aluno(nomeAluno, matriculaAluno, nota1Aluno, nota2Aluno);
+                    listaDeAlunos.add(aluno);
+
                     break;
                 case 2:
-                    System.out.println("Opção 2 selecionada.");
+                    // Exibir Alunos
+                    System.out.println("====Lista de Alunos====");
+                    for (Aluno a : listaDeAlunos) {
+                        a.exibirInformacoes();
+                    }
                     break;
                 case 3:
                     System.out.println("Encerrando o programa...");
@@ -41,5 +66,6 @@ public class Main {
 
 
         System.out.println("Sistema encerrado.");
+        scanner.close();
     }
 }

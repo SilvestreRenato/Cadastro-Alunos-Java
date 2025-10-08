@@ -23,6 +23,7 @@ class Aluno {
                             "Nota 2: " + getNota2() + ".\n" +
                             "Média do aluno: " + calcularMedia()
             );
+            System.out.println();
         }
 
         public String getNome() {
