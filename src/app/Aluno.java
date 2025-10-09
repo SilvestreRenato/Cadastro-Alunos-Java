@@ -1,13 +1,12 @@
 package app;
 
-public class Aluno {
-        private String nome;
+public class Aluno extends Pessoa{
         private String matricula;
         private double nota1;
         private double nota2;
 
         public Aluno (String nome, String matricula, double nota1, double nota2) {
-            this.nome = nome;
+            super(nome, "Aluno");
             this.matricula = matricula;
             this.nota1 = nota1;
             this.nota2 = nota2;
@@ -17,6 +16,7 @@ public class Aluno {
             return (getNota1() + getNota2()) / 2;
         }
 
+        @Override
         public void exibirInformacoes() {
             System.out.println(
                     "Aluno: " + getNome() + ".\n" +
@@ -26,10 +26,6 @@ public class Aluno {
                     "Média do aluno: " + calcularMedia()
             );
             System.out.println();
-        }
-
-        public String getNome() {
-            return this.nome;
         }
 
         public String getMatricula() {
