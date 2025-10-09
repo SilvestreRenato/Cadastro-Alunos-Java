@@ -1,4 +1,4 @@
-package app;
+package model; // Representa entidades
 
 public class Aluno extends Pessoa{
         private String matricula;

@@ -1,31 +1,26 @@
-import app.Aluno;
-import app.Professor;
+package system; // Contém a lógica principal do menu e controle
+
+import model.Aluno;
+import model.Professor;
+import utils.Utils;
 import java.util.*;
 
-public class Main {
-    public static void main(String[] args) {
-        //Scanner para leitura de dados do usuário.
-        Scanner scanner = new Scanner(System.in);
+public class SistemaCadastro {
+    Scanner scanner = new Scanner(System.in);
 
-        //ArrayList para armazenar os alunos.
-        ArrayList<Aluno> listaDeAlunos = new ArrayList <>();
+    //ArrayList para armazenar os alunos.
+    ArrayList<Aluno> listaDeAlunos = new ArrayList <>();
 
-        //ArrayList para armazenar os professores
-        ArrayList<Professor> listaDeProfessores = new ArrayList<>();
+    //ArrayList para armazenar os professores
+    ArrayList<Professor> listaDeProfessores = new ArrayList<>();
 
-        System.out.println("***Programa Cadastro Escolar***");
-        System.out.println();
-
+    public void iniciar() {
         // Variável de controle do loop.
         int control = 0;
 
         while (control == 0) {
 
-            // Exibir menu interativo.
-            System.out.println("Escolha uma Opção:");
-            System.out.println("1. Realizar Cadastro.");
-            System.out.println("2. Exibir cadastros");
-            System.out.println("3. Sair do programa.");
+            Utils.exibirMenu();
 
             // Variável de escolha.
             int option = scanner.nextInt();

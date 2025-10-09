@@ -1,4 +1,4 @@
-package app;
+package model; // Representa entidades
 
 public class Pessoa {
     private String nome;
