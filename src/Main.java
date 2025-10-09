@@ -1,3 +1,4 @@
+import app.Aluno;
 import java.util.*;
 
 public class Main {
@@ -28,7 +29,7 @@ public class Main {
 
             switch (option) {
                 case 1:
-//                  Cadastrar Aluno.
+                    //Cadastrar Aluno.
                     System.out.println("====Cadastro Do Aluno====");
                     System.out.println("Digite o nome do Aluno: ");
                     String nomeAluno = scanner.nextLine();

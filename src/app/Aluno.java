@@ -1,4 +1,6 @@
-class Aluno {
+package app;
+
+public class Aluno {
         private String nome;
         private String matricula;
         private double nota1;
@@ -18,10 +20,10 @@ class Aluno {
         public void exibirInformacoes() {
             System.out.println(
                     "Aluno: " + getNome() + ".\n" +
-                            "Matricula: " + getMatricula() + ".\n" +
-                            "Nota 1: " + getNota1() + ".\n" +
-                            "Nota 2: " + getNota2() + ".\n" +
-                            "Média do aluno: " + calcularMedia()
+                    "Matricula: " + getMatricula() + ".\n" +
+                    "Nota 1: " + getNota1() + ".\n" +
+                    "Nota 2: " + getNota2() + ".\n" +
+                    "Média do aluno: " + calcularMedia()
             );
             System.out.println();
         }
