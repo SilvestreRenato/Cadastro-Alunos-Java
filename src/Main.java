@@ -10,7 +10,10 @@ public class Main {
         //ArrayList para armazenar os alunos.
         ArrayList<Aluno> listaDeAlunos = new ArrayList <>();
 
-        System.out.println("***Programa Cadastro de Alunos***");
+        //ArrayList para armazenar os professores
+        ArrayList<Professor> listaDeProfessores = new ArrayList<>();
+
+        System.out.println("***Programa Cadastro Escolar***");
         System.out.println();
 
         // Variável de controle do loop.
@@ -20,8 +23,8 @@ public class Main {
 
             // Exibir menu interativo.
             System.out.println("Escolha uma Opção:");
-            System.out.println("1. Cadastrar Aluno.");
-            System.out.println("2. Exibir Alunos.");
+            System.out.println("1. Realizar Cadastro.");
+            System.out.println("2. Exibir cadastros");
             System.out.println("3. Sair do programa.");
 
             // Variável de escolha.
@@ -30,31 +33,68 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    //Cadastrar Aluno.
-                    System.out.println("====Cadastro Do Aluno====");
-                    System.out.println("Digite o nome do Aluno: ");
-                    String nomeAluno = scanner.nextLine();
+                    // Sistema de Cadastro
+                    System.out.println("====Cadastro Escolar====");
+                    System.out.println();
+                    System.out.println("Escreva o tipo de cadastro:");
+                    System.out.println("1. Professor.");
+                    System.out.println("2. Aluno.");
+                    String tipoCadastro = scanner.nextLine();
 
-                    System.out.println("Digite o nro da matricula: ");
-                    String matriculaAluno = scanner.nextLine();
+                    if (tipoCadastro.equals("1")) {
+                        System.out.println("Digite o nome do Professor: ");
+                        String nomeProfessor = scanner.nextLine();
 
-                    System.out.println("Digite a primeira nota: ");
-                    double nota1Aluno = scanner.nextDouble();
+                        System.out.println("Digite matéria: ");
+                        String materiaProfessor = scanner.nextLine();
 
-                    System.out.println("Digite a segunda nota: ");
-                    double nota2Aluno = scanner.nextDouble();
-                    scanner.nextLine();
+                        Professor professor = new Professor(nomeProfessor, materiaProfessor);
+                        listaDeProfessores.add(professor);
+                        System.out.println("Professo " + nomeProfessor + " cadastrado com sucesso!");
 
-                    Aluno aluno = new Aluno(nomeAluno, matriculaAluno, nota1Aluno, nota2Aluno);
-                    listaDeAlunos.add(aluno);
+                    } else if (tipoCadastro.equals("2")) {
+
+                        System.out.println("Digite o nome do Aluno: ");
+                        String nomeAluno = scanner.nextLine();
+
+                        System.out.println("Digite o nro da matricula: ");
+                        String matriculaAluno = scanner.nextLine();
+
+                        System.out.println("Digite a primeira nota: ");
+                        double nota1Aluno = scanner.nextDouble();
+
+                        System.out.println("Digite a segunda nota: ");
+                        double nota2Aluno = scanner.nextDouble();
+                        scanner.nextLine();
+
+                        Aluno aluno = new Aluno(nomeAluno, matriculaAluno, nota1Aluno, nota2Aluno);
+                        listaDeAlunos.add(aluno);
+                        System.out.println("Aluno " + nomeAluno + " cadastrado com sucesso!");
+
+                    }
 
                     break;
                 case 2:
-                    // Exibir Alunos
-                    System.out.println("====Lista de Alunos====");
-                    for (Aluno a : listaDeAlunos) {
-                        a.exibirInformacoes();
+                    System.out.println("====Lista Escolar====");
+                    System.out.println();
+                    System.out.println("Qual lista deseja consultar:");
+                    System.out.println("1. Professor.");
+                    System.out.println("2. Aluno.");
+                    String tipoLista = scanner.nextLine();
+
+                    if (tipoLista.equals("1")) {
+                        System.out.println("====Lista de Professores====");
+                        for(Professor p : listaDeProfessores) {
+                            p.exibirInformacoes();
+                        }
+
+                    } else if (tipoLista.equals("2")) {
+                        System.out.println("====Lista de Alunos====");
+                        for (Aluno a : listaDeAlunos) {
+                            a.exibirInformacoes();
+                        }
                     }
+
                     break;
                 case 3:
                     System.out.println("Encerrando o programa...");
@@ -65,7 +105,6 @@ public class Main {
             }
 
         }
-
 
         System.out.println("Sistema encerrado.");
         scanner.close();
