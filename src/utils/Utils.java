@@ -11,4 +11,10 @@ public class Utils {
         System.out.println("3. Sair do programa.");
         System.out.println();
     }
+
+    public static void limparTela() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+    }
 }

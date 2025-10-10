@@ -33,7 +33,7 @@ public class SistemaCadastro {
                     encerrar();
                     control++;
                 }
-                default -> { System.out.println("Opção invalida."); }
+                default -> System.out.println("Opção invalida.");
             }
 
         }
@@ -44,6 +44,7 @@ public class SistemaCadastro {
 
     public void cadastrar() {
         // Sistema de Cadastro
+        Utils.limparTela();
         System.out.println("====Cadastro Escolar====");
         System.out.println();
         System.out.println("Escreva o tipo de cadastro:");
@@ -52,6 +53,7 @@ public class SistemaCadastro {
         String tipoCadastro = scanner.nextLine();
 
         if (tipoCadastro.equals("1")) {
+            Utils.limparTela();
             System.out.println("Digite o nome do Professor: ");
             String nomeProfessor = scanner.nextLine();
 
@@ -64,6 +66,7 @@ public class SistemaCadastro {
 
         } else if (tipoCadastro.equals("2")) {
 
+            Utils.limparTela();
             System.out.println("Digite o nome do Aluno: ");
             String nomeAluno = scanner.nextLine();
 
@@ -85,6 +88,7 @@ public class SistemaCadastro {
     }
 
     public void listar() {
+        Utils.limparTela();
         System.out.println("====Lista Escolar====");
         System.out.println();
         System.out.println("Qual lista deseja consultar:");
@@ -93,12 +97,14 @@ public class SistemaCadastro {
         String tipoLista = scanner.nextLine();
 
         if (tipoLista.equals("1")) {
+            Utils.limparTela();
             System.out.println("====Lista de Professores====");
             for(Professor p : listaDeProfessores) {
                 p.exibirInformacoes();
             }
 
         } else if (tipoLista.equals("2")) {
+            Utils.limparTela();
             System.out.println("====Lista de Alunos====");
             for (Aluno a : listaDeAlunos) {
                 a.exibirInformacoes();
@@ -108,6 +114,7 @@ public class SistemaCadastro {
     }
 
     public void encerrar() {
+        Utils.limparTela();
         System.out.println("Encerrando o programa...");
     }
 }
