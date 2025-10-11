@@ -4,12 +4,14 @@ public class Aluno extends Pessoa{
         private String matricula;
         private double nota1;
         private double nota2;
+        private double media;
 
         public Aluno (String nome, String matricula, double nota1, double nota2) {
             super(nome, "Aluno");
             this.matricula = matricula;
             this.nota1 = nota1;
             this.nota2 = nota2;
+            this.media = calcularMedia();
         }
 
         public double calcularMedia() {
@@ -23,12 +25,16 @@ public class Aluno extends Pessoa{
                     "Matricula: " + getMatricula() + ".\n" +
                     "Nota 1: " + getNota1() + ".\n" +
                     "Nota 2: " + getNota2() + ".\n" +
-                    "Média do aluno: " + calcularMedia()
+                    "Média do aluno: " + getMedia()
             );
             System.out.println();
         }
 
-        public String getMatricula() {
+    private double getMedia() {
+            return this.media;
+    }
+
+    public String getMatricula() {
             return this.matricula;
         }
 
