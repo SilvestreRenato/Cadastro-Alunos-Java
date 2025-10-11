@@ -94,21 +94,43 @@ public class SistemaCadastro {
         System.out.println("Qual lista deseja consultar:");
         System.out.println("1. Professor.");
         System.out.println("2. Aluno.");
+        System.out.println("3. Aluno aprovados.");
+        System.out.println("4. Aluno reprovados.");
         String tipoLista = scanner.nextLine();
 
-        if (tipoLista.equals("1")) {
-            Utils.limparTela();
-            System.out.println("====Lista de Professores====");
-            for(Professor p : listaDeProfessores) {
-                p.exibirInformacoes();
-            }
+        switch (tipoLista) {
+            case "1":
+                Utils.limparTela();
+                System.out.println("====Lista de Professores====");
+                for(Professor p : listaDeProfessores) {
+                    p.exibirInformacoes();
+                }
+                break;
+            case "2":
+                Utils.limparTela();
+                System.out.println("====Lista de Alunos====");
+                for (Aluno a : listaDeAlunos) {
+                    a.exibirInformacoes();
+                }
+                break;
+            case "3":
+                Utils.limparTela();
+                System.out.println("====Alunos aprovados====");
+                listaDeAlunos.stream()
+                        .filter(a -> a.calcularMedia() >= 7)
+                        .forEach(Aluno::exibirInformacoes);
+                break;
+            case "4":
+                System.out.println("====Alunos reprovados====");
+                listaDeAlunos.stream()
+                        .filter(a -> a.calcularMedia() < 7)
+                        .forEach(Aluno::exibirInformacoes);
+                Utils.limparTela();
 
-        } else if (tipoLista.equals("2")) {
-            Utils.limparTela();
-            System.out.println("====Lista de Alunos====");
-            for (Aluno a : listaDeAlunos) {
-                a.exibirInformacoes();
-            }
+                break;
+            default:
+                Utils.limparTela();
+                System.out.println("Entrada invalida.");
         }
 
     }
