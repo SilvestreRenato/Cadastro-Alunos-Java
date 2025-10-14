@@ -2,22 +2,27 @@ package model; // Representa entidades
 
 public class Professor extends Pessoa{
     private String materia;
+    private String id;
 
-    public Professor(String nome, String materia) {
+    public Professor(String nome, String materia, String id) {
         super(nome, "Professor");
         this.materia = materia;
-    }
-
-    public String getMateria() {
-        return this.materia;
+        this.id = id;
     }
 
     @Override
     public void exibirInformacoes() {
         System.out.println(
                 "Professor: " + getNome() + "\n" +
-                        "Matéria: " + getMateria()
+                "ID: " + getId() + "\n" +
+                "Matéria: " + getMateria()
         );
         System.out.println();
     }
+
+    public String getMateria() {
+        return this.materia;
+    }
+
+    public String getId() { return this.id; }
 }
