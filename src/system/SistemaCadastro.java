@@ -9,10 +9,15 @@ public class SistemaCadastro {
     Scanner scanner = new Scanner(System.in);
 
     //ArrayList para armazenar os alunos.
-    ArrayList<Aluno> listaDeAlunos = new ArrayList <>();
+    //ArrayList<Aluno> listaDeAlunos = new ArrayList <>();
+    Map<String, Aluno> listaDeAlunos = new HashMap<>();
+
 
     //ArrayList para armazenar os professores
-    ArrayList<Professor> listaDeProfessores = new ArrayList<>();
+    //ArrayList<Professor> listaDeProfessores = new ArrayList<>();
+    Map<String, Professor> listaDeProfessores = new HashMap<>();
+
+    int tamanho;
 
     public void iniciar() {
         // Variável de controle do loop.
@@ -60,8 +65,11 @@ public class SistemaCadastro {
             System.out.println("Digite matéria: ");
             String materiaProfessor = scanner.nextLine();
 
-            Professor professor = new Professor(nomeProfessor, materiaProfessor);
-            listaDeProfessores.add(professor);
+            // Gera o ID aleatoriamente
+            String key = Utils.randomString(5);
+
+            Professor professor = new Professor(nomeProfessor, materiaProfessor, key);
+            listaDeProfessores.put(key, professor);
             System.out.println("Professo " + nomeProfessor + " cadastrado com sucesso!");
 
         } else if (tipoCadastro.equals("2")) {
@@ -70,8 +78,8 @@ public class SistemaCadastro {
             System.out.println("Digite o nome do Aluno: ");
             String nomeAluno = scanner.nextLine();
 
-            System.out.println("Digite o nro da matricula: ");
-            String matriculaAluno = scanner.nextLine();
+            // Gera a matricula do aluno aleatoriamente
+            String matriculaAluno = Utils.randomString(5);
 
             System.out.println("Digite a primeira nota: ");
             double nota1Aluno = scanner.nextDouble();
@@ -81,7 +89,7 @@ public class SistemaCadastro {
             scanner.nextLine();
 
             Aluno aluno = new Aluno(nomeAluno, matriculaAluno, nota1Aluno, nota2Aluno);
-            listaDeAlunos.add(aluno);
+            listaDeAlunos.put(matriculaAluno, aluno);
             System.out.println("Aluno " + nomeAluno + " cadastrado com sucesso!");
 
         }
@@ -102,26 +110,23 @@ public class SistemaCadastro {
             case "1":
                 Utils.limparTela();
                 System.out.println("====Lista de Professores====");
-                for(Professor p : listaDeProfessores) {
-                    p.exibirInformacoes();
-                }
+                // Percorrer todos os professores da coleção e apresentar informações
+                listaDeProfessores.forEach((k, p) -> p.exibirInformacoes());
                 break;
             case "2":
                 Utils.limparTela();
                 System.out.println("====Lista de Alunos====");
-                for (Aluno a : listaDeAlunos) {
-                    a.exibirInformacoes();
-                }
+                listaDeAlunos.forEach((k, a) -> a.exibirInformacoes());
                 break;
             case "3":
                 Utils.limparTela();
-                int tamanho = listaDeAlunos.size();
+                tamanho = listaDeAlunos.size();
 
                 if (tamanho == 0) {
                     System.out.println("Não há alunos aprovados");
                 } else {
                     System.out.println("====Alunos aprovados====");
-                    listaDeAlunos.stream()
+                    listaDeAlunos.values().stream()
                         .filter(a -> a.calcularMedia() >= 7)
                         .forEach(Aluno::exibirInformacoes);
                     break;
@@ -134,7 +139,7 @@ public class SistemaCadastro {
                     System.out.println("não há alunos reprovados");
                 } else {
                     System.out.println("====Alunos reprovados====");
-                    listaDeAlunos.stream()
+                    listaDeAlunos.values().stream()
                         .filter(a -> a.calcularMedia() < 7)
                         .forEach(Aluno::exibirInformacoes);
                 }
