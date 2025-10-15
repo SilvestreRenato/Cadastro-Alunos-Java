@@ -8,16 +8,12 @@ import java.util.*;
 public class SistemaCadastro {
     Scanner scanner = new Scanner(System.in);
 
-    //ArrayList para armazenar os alunos.
-    //ArrayList<Aluno> listaDeAlunos = new ArrayList <>();
+    // Coleção de Alunos
     Map<String, Aluno> listaDeAlunos = new HashMap<>();
 
 
-    //ArrayList para armazenar os professores
-    //ArrayList<Professor> listaDeProfessores = new ArrayList<>();
+    // Coleção de professores
     Map<String, Professor> listaDeProfessores = new HashMap<>();
-
-    int tamanho;
 
     public void iniciar() {
         // Variável de controle do loop.
@@ -111,12 +107,12 @@ public class SistemaCadastro {
                 Utils.limparTela();
                 System.out.println("====Lista de Professores====");
                 // Percorrer todos os professores da coleção e apresentar informações
-                listaDeProfessores.forEach((k, p) -> p.exibirInformacoes());
+                listaDeProfessores.values().forEach(Professor::exibirInformacoes);
                 break;
             case "2":
                 Utils.limparTela();
                 System.out.println("====Lista de Alunos====");
-                listaDeAlunos.forEach((k, a) -> a.exibirInformacoes());
+                listaDeAlunos.values().forEach(Aluno::exibirInformacoes);
                 break;
             case "3":
                 Utils.listarComFiltro("Alunos aprovados", listaDeAlunos.values(), a -> a.calcularMedia() >= 7, Aluno::exibirInformacoes);
