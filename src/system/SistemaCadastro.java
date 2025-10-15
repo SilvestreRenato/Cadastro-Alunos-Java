@@ -119,30 +119,10 @@ public class SistemaCadastro {
                 listaDeAlunos.forEach((k, a) -> a.exibirInformacoes());
                 break;
             case "3":
-                Utils.limparTela();
-                tamanho = listaDeAlunos.size();
-
-                if (tamanho == 0) {
-                    System.out.println("Não há alunos aprovados");
-                } else {
-                    System.out.println("====Alunos aprovados====");
-                    listaDeAlunos.values().stream()
-                        .filter(a -> a.calcularMedia() >= 7)
-                        .forEach(Aluno::exibirInformacoes);
-                    break;
-                }
+                Utils.listarComFiltro("Alunos aprovados", listaDeAlunos.values(), a -> a.calcularMedia() >= 7, Aluno::exibirInformacoes);
+                break;
             case "4":
-                Utils.limparTela();
-                tamanho = listaDeAlunos.size();
-
-                if (tamanho == 0) {
-                    System.out.println("não há alunos reprovados");
-                } else {
-                    System.out.println("====Alunos reprovados====");
-                    listaDeAlunos.values().stream()
-                        .filter(a -> a.calcularMedia() < 7)
-                        .forEach(Aluno::exibirInformacoes);
-                }
+                Utils.listarComFiltro("Alunos reprovados", listaDeAlunos.values(), a -> a.calcularMedia() < 7, Aluno::exibirInformacoes);
                 break;
             default:
                 Utils.limparTela();

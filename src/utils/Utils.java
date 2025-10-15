@@ -1,6 +1,9 @@
 package utils;
 
+import java.util.Collection;
 import java.util.Random;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class Utils {
     public static void exibirMenu() {
@@ -34,5 +37,19 @@ public class Utils {
         }
 
         return sb.toString();
+    }
+
+    public static <T> void listarComFiltro(String titulo, Collection<T> colecao, Predicate<T> filtro, Consumer<T> exibir) {
+        Utils.limparTela();
+        System.out.println("====" + titulo + "====");
+
+        if (colecao.isEmpty()) {
+            System.out.println("Nenhum registro encontrado.");
+            return;
+        }
+
+        colecao.stream()
+            .filter(filtro)
+            .forEach(exibir);
     }
 }
