@@ -1,6 +1,6 @@
 package model; // Representa entidades
 
-public class Aluno extends Pessoa{
+public class Aluno extends Pessoa implements Comparable<Aluno>{
         private String matricula;
         private double nota1;
         private double nota2;
@@ -45,4 +45,9 @@ public class Aluno extends Pessoa{
         public double getNota2() {
             return this.nota2;
         }
+
+    @Override
+    public int compareTo(Aluno o) {
+        return getNome().compareTo(o.getNome());
+    }
 }

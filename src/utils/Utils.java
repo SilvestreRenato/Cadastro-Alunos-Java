@@ -1,7 +1,6 @@
 package utils;
 
-import java.util.Collection;
-import java.util.Random;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -51,5 +50,21 @@ public class Utils {
         colecao.stream()
             .filter(filtro)
             .forEach(exibir);
+    }
+
+    public static <T extends Comparable<? super T>> void listarEmOrdem(String titulo, Collection<T> colecao, Consumer<T> exibir) {
+        Utils.limparTela();
+        System.out.println("====" + titulo + "====");
+
+        if (colecao.isEmpty()) {
+            System.out.println("Nenhum registro encontrado.");
+            return;
+        }
+
+        List<T> listaOrdenada = new ArrayList<>(colecao);
+
+        Collections.sort(listaOrdenada);
+
+        listaOrdenada.forEach(exibir);
     }
 }

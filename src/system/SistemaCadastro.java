@@ -104,15 +104,13 @@ public class SistemaCadastro {
 
         switch (tipoLista) {
             case "1":
-                Utils.limparTela();
-                System.out.println("====Lista de Professores====");
-                // Percorrer todos os professores da coleção e apresentar informações
-                listaDeProfessores.values().forEach(Professor::exibirInformacoes);
+                // Percorrer todos os professores em ordem alfabetica da coleção e apresentar informações
+                Utils.listarEmOrdem("Lista de Professores", listaDeProfessores.values(), Professor::exibirInformacoes);
+//                listaDeProfessores.values().forEach(Professor::exibirInformacoes);
                 break;
             case "2":
-                Utils.limparTela();
-                System.out.println("====Lista de Alunos====");
-                listaDeAlunos.values().forEach(Aluno::exibirInformacoes);
+                Utils.listarEmOrdem("Lista de Alunos", listaDeAlunos.values(), Aluno::exibirInformacoes);
+//                listaDeAlunos.values().forEach(Aluno::exibirInformacoes);
                 break;
             case "3":
                 Utils.listarComFiltro("Alunos aprovados", listaDeAlunos.values(), a -> a.calcularMedia() >= 7, Aluno::exibirInformacoes);
